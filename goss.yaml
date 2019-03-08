@@ -1,0 +1,24 @@
+---
+process:
+  flask:
+    running: true
+port:
+  tcp:80:
+    listening: true
+    ip:
+    - 0.0.0.0
+command:
+  curl localhost:80:
+    title: Checking main entrypoint
+    exit-status: 0
+    stdout:
+    - 'Hello, World! GET'
+    stderr: []
+    timeout: 1000
+  curl -X PUT localhost:80:
+    title: Checking main entrypoint
+    exit-status: 0
+    stdout:
+    - 'Hello, World! PUT'
+    stderr: []
+    timeout: 1000
