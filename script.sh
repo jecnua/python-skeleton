@@ -5,9 +5,13 @@ DEST_DIR=$1
 
 mkdir -p $DEST_DIR
 
+
 mkdir -p $DEST_DIR/src
-mkdir -p $DEST_DIR/src/tests
 cp -rp src/* $DEST_DIR/src/
+
+mkdir -p $DEST_DIR/src/tests
+cp -rp tests/* $DEST_DIR/tests/
+
 mkdir -p $DEST_DIR/dist
 touch $DEST_DIR/dist/.gitignore
 touch $DEST_DIR/README.md
@@ -27,7 +31,6 @@ pipenv install --dev pylint
 pipenv install --dev pytest
 
 #
-pipenv install flask
 pipenv install flask
 pipenv install structlog
 pipenv install prometheus-flask-exporter
