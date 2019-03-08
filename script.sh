@@ -1,20 +1,18 @@
 #!/bin/bash
 
+DEST_DIR="$1"
 
-DEST_DIR=$1
+mkdir -p "$DEST_DIR"
 
-mkdir -p $DEST_DIR
+mkdir -p "$DEST_DIR/src"
+cp -rp src/* "$DEST_DIR/src/"
 
+mkdir -p "$DEST_DIR/tests"
+cp -rp tests/* "$DEST_DIR/tests/"
 
-mkdir -p $DEST_DIR/src
-cp -rp src/* $DEST_DIR/src/
-
-mkdir -p $DEST_DIR/src/tests
-cp -rp tests/* $DEST_DIR/tests/
-
-mkdir -p $DEST_DIR/dist
-touch $DEST_DIR/dist/.gitignore
-touch $DEST_DIR/README.md
+mkdir -p "$DEST_DIR/dist"
+touch "$DEST_DIR/dist/.gitignore"
+touch "$DEST_DIR/README.md"
 
 # echo '[MESSAGES CONTROL]' > $DEST_DIR/.pylintrc
 # echo 'disable=C0301' >> $DEST_DIR/.pylintrc
@@ -24,7 +22,7 @@ touch $DEST_DIR/README.md
 # echo '**pycache*' >> $DEST_DIR/.gitignore
 
 pwd
-pushd $DEST_DIR || exit
+pushd "$DEST_DIR" || exit
 
 # DEV
 pipenv install --dev pylint
@@ -38,9 +36,9 @@ pipenv install prometheus-flask-exporter
 popd
 pwd
 
-cp *.yaml $DEST_DIR/
-cp Dockerfile $DEST_DIR/
-cp test.sh $DEST_DIR/
-cp run.sh $DEST_DIR/
-cp .gitignore $DEST_DIR/
-cp .pylintrc $DEST_DIR/
+cp ./*.yaml "$DEST_DIR/"
+cp Dockerfile "$DEST_DIR/"
+cp test.sh "$DEST_DIR/"
+cp run.sh "$DEST_DIR/"
+cp .gitignore "$DEST_DIR/"
+cp .pylintrc "$DEST_DIR/"
