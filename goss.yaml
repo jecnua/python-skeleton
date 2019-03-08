@@ -9,16 +9,23 @@ port:
     - 0.0.0.0
 command:
   curl localhost:80:
-    title: Checking main entrypoint
+    title: Checking GET method
     exit-status: 0
     stdout:
     - 'Hello, World! GET'
     stderr: []
     timeout: 1000
   curl -X PUT localhost:80:
-    title: Checking main entrypoint
+    title: Checking PUT method
     exit-status: 0
     stdout:
     - 'Hello, World! PUT'
+    stderr: []
+    timeout: 1000
+  curl localhost:80/metrics:
+    title: Checking metrics endpoint
+    exit-status: 0
+    stdout:
+    - 'flask_http_request_created'
     stderr: []
     timeout: 1000

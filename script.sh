@@ -26,6 +26,7 @@ pipenv install --dev pylint
 pipenv install flask
 pipenv install boto3
 pipenv install flask
+pipenv install structlog
 pipenv install prometheus-flask-exporter
 
 popd
