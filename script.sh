@@ -22,9 +22,12 @@ touch $DEST_DIR/README.md
 pwd
 pushd $DEST_DIR || exit
 
+# DEV
 pipenv install --dev pylint
+pipenv install --dev pytest
+
+#
 pipenv install flask
-pipenv install boto3
 pipenv install flask
 pipenv install structlog
 pipenv install prometheus-flask-exporter
