@@ -1,10 +1,8 @@
 #!/bin/bash
 
-set -e
-
-hadolint Dockerfile
-shellcheck run.sh
-shellcheck test.sh
-pipenv run pytest
 docker build . -t python-test:latest
-dgoss run python-test
+docker rm -f python-test
+docker run --rm --name python-test -d -p 5000:80 python-test:latest
+sleep 5
+curl localhost:5000
+docker logs python-test

@@ -1,6 +1,6 @@
 ---
 process:
-  flask:
+  gunicorn:
     running: true
 port:
   tcp:80:
@@ -26,6 +26,6 @@ command:
     title: Checking metrics endpoint
     exit-status: 0
     stdout:
-    - 'flask_http_request_created'
+    - 'flask_exporter_info'
     stderr: []
     timeout: 1000

@@ -1,0 +1,59 @@
+import logging
+import uuid
+import gunicorn
+
+import structlog
+from flask import Flask, request, jsonify
+from flask.logging import default_handler
+from prometheus_flask_exporter import PrometheusMetrics
+
+
+def add_uuid(_, __, event_dict):
+    '''
+    Add a UUID in every log entry to allow aggregations between log entries
+    There first two arguments are _ and __ as for documentation example
+    '''
+    event_dict["uuid"] = str(uuid.uuid4())
+    return event_dict
+
+def init_logger():
+    logger = structlog.wrap_logger(
+        logging.getLogger(__name__),
+        processors=[
+            add_uuid,
+            structlog.stdlib.filter_by_level,
+            structlog.stdlib.add_logger_name,
+            structlog.stdlib.add_log_level,
+            structlog.stdlib.PositionalArgumentsFormatter(),
+            structlog.processors.TimeStamper(fmt="iso"),
+            structlog.processors.StackInfoRenderer(),
+            structlog.processors.JSONRenderer(indent=1, sort_keys=True)
+        ],
+        context_class=dict,
+        cache_logger_on_first_use=True,
+    )
+    return logger
+
+app = Flask(__name__)
+metrics = PrometheusMetrics(app)
+logger = init_logger()
+
+@app.route('/', methods=['GET', 'PUT'])
+def hello_world():
+    if request.method == 'GET':
+        # log = logging.getLogger(__name__
+        logger.info('INFO FROM STRUCT')
+        logger.error('ERROR FROM STRUCT') # this works
+        app.logger.info('INFO FROM ORIGINAL')
+        app.logger.error('ERROR FROM ORIGINAL') # this works
+        return 'Hello, World! GET'
+    if request.method == 'PUT':
+        return 'Hello, World! PUT'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=False)
+
+if __name__ != '__main__':
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    # app.logger.setLevel(gunicorn_logger.level)

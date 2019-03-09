@@ -15,4 +15,6 @@ ENV FLASK_APP 'src/app.py'
 
 EXPOSE 80
 
-CMD [ "flask", "run", "--host=0.0.0.0", "--port=80"]
+WORKDIR /usr/src/app/src
+
+CMD ["gunicorn","--workers=2","--bind=0.0.0.0:80","--log-level=info","app:app"]
