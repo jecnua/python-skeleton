@@ -33,7 +33,8 @@ pipenv install --dev pytest
 
 #
 pipenv install flask
-pipenv install structlog
+pipenv install gunicorn
+# pipenv install structlog
 pipenv install prometheus-flask-exporter
 
 popd
