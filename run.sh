@@ -1,7 +1,11 @@
 #!/bin/bash
 
-docker build . -t python-test:latest
-docker rm -f python-test
-docker run --rm --name python-test -d -p 5000:80 python-test:latest
-sleep 3
-curl localhost:5000
+IMAGE_NAME=$(uuid)
+PORT=$(shuf -i 2000-65000 -n 1)
+
+docker build . -t "$IMAGE_NAME:latest"
+docker rm -f "$IMAGE_NAME"
+docker run --rm --name "$IMAGE_NAME" -d -p "$PORT":80 "$IMAGE_NAME:latest"
+sleep 5
+curl localhost:"$PORT"
+docker logs "$IMAGE_NAME"

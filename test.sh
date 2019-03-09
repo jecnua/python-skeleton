@@ -1,8 +1,12 @@
 #!/bin/bash
 
-docker build . -t python-test:latest
-docker rm -f python-test
-docker run --rm --name python-test -d -p 5000:80 python-test:latest
-sleep 5
-curl localhost:5000
-docker logs python-test
+set -e
+
+IMAGE_NAME=$(uuid)
+
+hadolint Dockerfile
+shellcheck run.sh
+shellcheck test.sh
+pipenv run pytest
+docker build . -t "$IMAGE_NAME":latest
+dgoss run "$IMAGE_NAME"
