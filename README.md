@@ -4,6 +4,10 @@
 
 - Python 3
 
+## Usage
+
+    ./script path-to-dir
+
 ##
 
     pipenv install

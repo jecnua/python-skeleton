@@ -9,3 +9,4 @@ docker run --rm --name "$IMAGE_NAME" -d -p "$PORT":80 "$IMAGE_NAME:latest"
 sleep 5
 curl localhost:"$PORT"
 docker logs "$IMAGE_NAME"
+docker rm -f "$IMAGE_NAME"
