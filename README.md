@@ -17,3 +17,8 @@
     docker run --rm --name python-test -d -p 5000:5000 python-test:latest
 
 https://github.com/fdhadzh/flask-pipenv-example
+
+## TODO
+
+- acqua docker scan
+- allow to choose the project name
