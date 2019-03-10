@@ -22,6 +22,22 @@ def hello_world():
         return 'Hello, World! PUT'
     raise Exception('Method not allowed')
 
+@app.route('/hello/<user>', methods=['GET'])
+def hello_user(user):
+    '''
+    This methos shows how to use (part of) the endpoint
+    as parameter for the function
+    '''
+    return 'Hello ' + str(user)
+
+@app.route('/modify/<user>', methods=['PUT'])
+def modify_user(user):
+    '''
+    This methos shows how you can return a different error
+    code than 200
+    '''
+    return '', 204
+
 if __name__ == '__main__':
     app.run()
 

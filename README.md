@@ -22,7 +22,15 @@
 
 https://github.com/fdhadzh/flask-pipenv-example
 
+
+##
+
+Different error code: http://flask.pocoo.org/docs/1.0/quickstart/#about-responses
+
+Validate https://pythonhosted.org/Flask-Inputs/
+
 ## TODO
 
 - acqua docker scan
 - allow to choose the project name
+- add on test the user greeting and error code

@@ -22,6 +22,14 @@ command:
     - 'Hello, World! PUT'
     stderr: []
     timeout: 1000
+  curl -v -X PUT localhost:80/modify/fab:
+    title: Checking PUT method
+    exit-status: 0
+    stdout:
+    - ''
+    stderr:
+    - '204'
+    timeout: 1000
   curl localhost:80/metrics:
     title: Checking metrics endpoint
     exit-status: 0
