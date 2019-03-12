@@ -36,7 +36,7 @@ def modify_user(user):
     This methos shows how you can return a different error
     code than 200
     '''
-    return '', 204
+    return '', 204 # This way you return the code of your choice
 
 if __name__ == '__main__':
     app.run()
