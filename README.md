@@ -1,6 +1,10 @@
 # Python module skeleton - TO BE REFINED
 
-*TO*BE*REFINED*
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![](https://img.shields.io/maintenance/yes/2019.svg)
+![python-3](https://img.shields.io/badge/python-3-green.svg)
+
+_TO_BE_REFINED_
 
 This module has been created in a hurry while preparing a test so it not at the
 same standards of the others.
@@ -43,11 +47,11 @@ Validate <https://pythonhosted.org/Flask-Inputs/>
 
 -   <https://github.com/nathancahill/flask-inputs>
 -   <https://gitlab.com/vector.kerr/flask-jsonschema-validator>
-- <http://flask.pocoo.org/docs/0.12/api/#flask.Request.is_json> too strict
+-   <http://flask.pocoo.org/docs/0.12/api/#flask.Request.is_json> too strict
 
-    if request.method == 'GET':
-        return jsonify(message='Hello '+name)
-        <http://flask.pocoo.org/docs/0.12/api/#flask.json.jsonify>
+      if request.method == 'GET':
+          return jsonify(message='Hello '+name)
+          <http://flask.pocoo.org/docs/0.12/api/#flask.json.jsonify>
 
 input_recieved = request.get_json(force=True)
 
@@ -57,6 +61,6 @@ this will return malformed if it's empty or not json!!!
 
 ## TODO
 
+-   Add travisd
 -   acqua docker scan
 -   allow to choose the project name
--   add on test the user greeting and error code
