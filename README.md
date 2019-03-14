@@ -1,4 +1,9 @@
-#
+# Python module skeleton - TO BE REFINED
+
+*TO*BE*REFINED*
+
+This module has been created in a hurry while preparing a test so it not at the
+same standards of the others.
 
 ## Environment
 
@@ -6,7 +11,7 @@
 
 ## Usage
 
-    ./script path-to-dir
+    ./script <path-to-dir>
 
 ##
 
