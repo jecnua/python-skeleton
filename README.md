@@ -6,8 +6,7 @@
 
 _TO_BE_REFINED_
 
-This module has been created in a hurry while preparing a test so it not at the
-same standards of the others.
+This module has been created in a hurry while preparing a test so it not at the same standards of the others.
 
 ## Environment
 
@@ -17,13 +16,13 @@ same standards of the others.
 
     ./script <path-to-dir>
 
-##
+## Test
 
     pipenv install
     export FLASK_APP=src/app.py
     FLASK_APP=src/app.py pipenv run flask run
 
-##
+## Build
 
     docker build . -t python-test:latest
     docker rm -f python-test
@@ -53,14 +52,17 @@ Validate <https://pythonhosted.org/Flask-Inputs/>
           return jsonify(message='Hello '+name)
           <http://flask.pocoo.org/docs/0.12/api/#flask.json.jsonify>
 
-input_recieved = request.get_json(force=True)
+## Validation
 
-this will return malformed if it's empty or not json!!!
+    input_recieved = request.get_json(force=True)
 
-# app.logger.error(request.is_json) # Too strict as it's not specified
+This will return malformed if it's empty or not json.
+
+    app.logger.error(request.is_json) # Too strict as it's not specified
 
 ## TODO
 
--   Add travisd
--   acqua docker scan
--   allow to choose the project name
+-   Add travis
+-   Add acqua docker scan
+-   Allow to choose the project name
+-   Import all new learning from the test
