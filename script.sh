@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ "$#" -ne 1 ]; then
+    echo "You need to specify 1 parameters."
+    echo "./script.sh <path-to-dir>"
+    exit 1
+fi
+
 DEST_DIR="$1"
 
 mkdir -p "$DEST_DIR"
@@ -28,16 +34,16 @@ pwd
 pushd "$DEST_DIR" || exit
 
 # DEV
-pipenv install --dev pylint
-pipenv install --dev pytest
+PIPENV_IGNORE_VIRTUALENVS=1 pipenv install --dev pylint
+PIPENV_IGNORE_VIRTUALENVS=1 pipenv install --dev pytest
 
 #
-pipenv install flask
-pipenv install flask-inputs
-pipenv install gunicorn
-pipenv install jsonschema
-# pipenv install structlog
-pipenv install prometheus-flask-exporter
+PIPENV_IGNORE_VIRTUALENVS=1 pipenv install flask
+PIPENV_IGNORE_VIRTUALENVS=1 pipenv install flask-inputs
+PIPENV_IGNORE_VIRTUALENVS=1 pipenv install gunicorn
+# PIPENV_IGNORE_VIRTUALENVS=1 pipenv install jsonschema
+# PIPENV_IGNORE_VIRTUALENVS=1 pipenv install structlog
+PIPENV_IGNORE_VIRTUALENVS=1 pipenv install prometheus-flask-exporter
 
 popd
 pwd

@@ -15,8 +15,8 @@ def hello_world():
     Test method
     '''
     if request.method == 'GET':
-        app.logger.info('INFO FROM ORIGINAL') # pylint: disable=E1101
-        app.logger.error('ERROR FROM ORIGINAL') # pylint: disable=E1101
+        app.logger.info('INFO LEVEL GET METHOD /') # pylint: disable=E1101
+        app.logger.error('ERROR LEVEL GET METHOD /') # pylint: disable=E1101
         return 'Hello, World! GET'
     if request.method == 'PUT':
         return 'Hello, World! PUT'
@@ -36,6 +36,7 @@ def modify_user(user):
     This methos shows how you can return a different error
     code than 200
     '''
+    app.logger.info('INFO LEVEL PUT METHOD /modify/<user> WITH' + str(user)) # pylint: disable=E1101
     return '', 204 # This way you return the code of your choice
 
 if __name__ == '__main__':

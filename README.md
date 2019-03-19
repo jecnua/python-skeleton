@@ -6,17 +6,24 @@
 
 _TO_BE_REFINED_
 
-This module has been created in a hurry while preparing a test so it not at the same standards of the others.
+_DISCLAIMER_: This module has been created in a hurry so it not at the same
+standards of the others.
 
-## Environment
-
--   Python 3
+This module will create a python3 flask project (with docker and testing).
 
 ## Usage
 
-    ./script <path-to-dir>
+You will need to call the script passing as a parameter the new project path:
+
+    ./script.sh <path-to-dir>
+
+For example:
+
+    ./script.sh /tmp/jecnua-new-project
 
 ## Test
+
+To run the python app locally (not in docker):
 
     pipenv install
     export FLASK_APP=src/app.py
@@ -24,13 +31,15 @@ This module has been created in a hurry while preparing a test so it not at the 
 
 ## Build
 
+Build and run docker:
+
     docker build . -t python-test:latest
     docker rm -f python-test
     docker run --rm --name python-test -d -p 5000:5000 python-test:latest
 
-<https://github.com/fdhadzh/flask-pipenv-example>
-
 ## Notes
+
+-   <https://github.com/fdhadzh/flask-pipenv-example>
 
 How to build url with variables:
 
@@ -62,7 +71,8 @@ This will return malformed if it's empty or not json.
 
 ## TODO
 
+-   Add a version for lambdas
 -   Add travis
 -   Add acqua docker scan
 -   Allow to choose the project name
--   Import all new learning from the test
+-   Import all new learning
