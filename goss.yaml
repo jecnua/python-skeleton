@@ -30,6 +30,14 @@ command:
     stderr:
     - '204'
     timeout: 1000
+  curl -v -X GET localhost:80/cause-error/:
+    title: Checking error code
+    exit-status: 0
+    stdout:
+    - ''
+    stderr:
+    - '500'
+    timeout: 1000
   curl localhost:80/metrics:
     title: Checking metrics endpoint
     exit-status: 0

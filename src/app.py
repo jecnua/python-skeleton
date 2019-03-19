@@ -2,17 +2,19 @@
 Entrypoint module of the flask application
 '''
 import logging
+import os
 
-from flask import Flask, request
+from flask import Flask, abort, request
 from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__) # pylint: disable=C0103
 PrometheusMetrics(app)
+TEST_MODE = os.getenv('TEST_MODE', 'false')
 
 @app.route('/', methods=['GET', 'PUT'])
 def hello_world():
     '''
-    Test method
+    Main app entrypoint.
     '''
     if request.method == 'GET':
         app.logger.info('INFO LEVEL GET METHOD /') # pylint: disable=E1101
@@ -26,9 +28,17 @@ def hello_world():
 def hello_user(user):
     '''
     This methos shows how to use (part of) the endpoint
-    as parameter for the function
+    as parameter for the function.
     '''
     return 'Hello ' + str(user)
+
+@app.route('/cause-error/', methods=['GET'])
+def cause_internal_error_path():
+    '''
+    This method causes a 500
+    '''
+    app.logger.fatal('Internal error') # pylint: disable=E1101
+    abort(500) # Returns a 500 error code
 
 @app.route('/modify/<user>', methods=['PUT'])
 def modify_user(user):
