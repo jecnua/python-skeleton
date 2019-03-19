@@ -15,7 +15,6 @@ include env.sh
 else
 $(error echo File env.sh does not exist.)
 endif
-endif
 
 # Get the latest commit.
 GIT_COMMIT = $(strip $(shell git rev-parse --short HEAD))
