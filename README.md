@@ -69,6 +69,12 @@ This will return malformed if it's empty or not json.
 
     app.logger.error(request.is_json) # Too strict as it's not specified
 
+## Notes
+
+Limitation of cli and endpoint.
+
+- <https://github.com/aws/aws-cli/issues/1270>
+
 ## TODO
 
 -   Add a version for lambdas
