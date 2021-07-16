@@ -1,7 +1,7 @@
 # Python module skeleton - TO BE REFINED
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![](https://img.shields.io/maintenance/yes/2019.svg)
+![](https://img.shields.io/maintenance/yes/2021.svg)
 ![python-3](https://img.shields.io/badge/python-3-green.svg)
 
 _TO_BE_REFINED_
@@ -13,13 +13,18 @@ This module will create a python3 flask project (with docker and testing).
 
 ## Usage
 
-You will need to call the script passing as a parameter the new project path:
+You will need to call the script passing as a parameter the new project path and type:
 
-    ./script.sh <path-to-dir>
+    ./script.sh <path-to-dir> <type>
+
+Type can be of value:
+
+- flask
+- script
 
 For example:
 
-    ./script.sh /tmp/jecnua-new-project
+    ./script.sh /tmp/jecnua-new-project flask
 
 ## Test
 
