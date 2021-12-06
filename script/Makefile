@@ -1,4 +1,5 @@
 test:
+	pipenv run isort src/
 	pipenv run pylint src/
 	pipenv run python -m unittest tests/test_app.py
 

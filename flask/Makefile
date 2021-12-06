@@ -1,7 +1,10 @@
 default: build
 
+lint:
+	pipenv run isort src/
+
 # Build Docker image
-build: docker_build output
+build: lint docker_build output
 
 # Build and push Docker image
 release: docker_build docker_push output

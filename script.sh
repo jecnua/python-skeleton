@@ -47,6 +47,10 @@ pushd "$DEST_DIR" || exit
 # DEV
 PIPENV_IGNORE_VIRTUALENVS=1 pipenv install --dev pylint
 PIPENV_IGNORE_VIRTUALENVS=1 pipenv install --dev pytest
+PIPENV_IGNORE_VIRTUALENVS=1 pipenv install --dev pytest-cov
+PIPENV_IGNORE_VIRTUALENVS=1 pipenv install --dev isort
+PIPENV_IGNORE_VIRTUALENVS=1 pipenv install --dev pre-commit
+#PIPENV_IGNORE_VIRTUALENVS=1 pipenv install --dev safety-db
 
 if [[ $PROJECT_TYPE == "flask" ]]
 then
@@ -86,5 +90,18 @@ then
   cp .pylintrc "$DEST_DIR/"
   echo '1.0.0' > "$DEST_DIR/VERSION"
 fi
+
+pwd
+pushd "$DEST_DIR" || exit
+
+git init || exit 1
+git add .
+git commit -m 'First commit'
+
+# Test
+make develop
+
+popd
+pwd
 
 exit 0

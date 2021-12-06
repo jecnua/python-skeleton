@@ -11,7 +11,7 @@ def run():
     '''
     Main function
     '''
-    logging.debug('Main function') # pylint: disable=E1101
+    logging.debug('Main function')
     return ""
 
 if __name__ == '__main__':
